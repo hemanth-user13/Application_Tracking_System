@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Candidate List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            color: #a0522d;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        thead {
+            background-color: #0047ab;
+            color: #fff;
+        }
+
+        #searchInput {
+            width: 300px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .excel-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            float: right;
+            text-decoration: none;
+            margin-bottom: 10px;
+            margin-right: 10px;
+            border-radius: 5px;
+        }
+
+        .excel-button:hover {
+            background-color: #0056b3;
+        }
+
+        .logo-container {
+            float: right;
+            margin-right: 10px;
+        }
+
+        .logo-image {
+            height: 40px;
+            width: auto;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Candidates Information</h1><hr><br>
+    <div class="logo-container">
+
+    </div>
+    <a href="../candidates/excel1/" class="excel-button">Export Form</a>
+    <a href="http://127.0.0.1:8000/loginval/" class="excel-button">Back</a>
+    <input type="text" id="searchInput" placeholder="Search..." onkeyup="filterTable()">
+    <table border="1" id="candidateTable">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Branch</th>
+                <th>Skills</th>
+                <th>JR Number</th>
+                <th>Phone Number</th>
+                <th>Email Address</th>
+                <th>Current Company</th>
+                <th>Total Experience</th>
+                <th>CTC</th>
+                <th>Expected CTC</th>
+                <th>Offers in Hand</th>
+                <th>Notice Period</th>
+                <th>Current Location</th>
+                <th>Source</th>
+                <th>Screening Status</th>
+                <th>Screened By</th>
+                <th>Source Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for candidate in candidates %}
+            <tr>
+                <td>{{ candidate.first_name }}</td>
+                <td>{{ candidate.last_name }}</td>
+                <td>{{ candidate.branch }}</td>
+                <td>{{ candidate.skills }}</td>
+                <td>{{ candidate.jr_number }}</td>
+                <td>{{ candidate.phone_number }}</td>
+                <td>{{ candidate.email_address }}</td>
+                <td>{{ candidate.current_company }}</td>
+                <td>{{ candidate.total_experience }}</td>
+                <td>{{ candidate.ctc }}</td>
+                <td>{{ candidate.expected_ctc }}</td>
+                <td>{{ candidate.offers_in_hand }}</td>
+                <td>{{ candidate.notice_period }}</td>
+                <td>{{ candidate.current_location }}</td>
+                <td>{{ candidate.source }}</td>
+                <td>{{ candidate.screening_status }}</td>
+                <td>{{ candidate.screened_by }}</td>
+                <td>{{ candidate.source_date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <script>
+        function filterTable() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("candidateTable");
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows and hide those that don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td");
+                for (var j = 0; j < td.length; j++) {
+                    if (td[j]) {
+                        txtValue = td[j].textContent || td[j].innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                            break;
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

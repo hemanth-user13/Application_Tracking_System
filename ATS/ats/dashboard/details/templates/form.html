@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Candidate Form</title>
+    <style>
+        /* Add your CSS styling here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color:#f8f8ff
+        }
+
+        h1 {
+            color: #b8860b;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"] {
+            width: 300px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .candidates-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            float: right;
+            text-decoration:none;
+            margin:10px
+        }
+
+        .candidates-button:hover {
+            background-color: #0056b3;
+        }
+
+        .clearfix::after {
+            content: "";
+            display: <table></table>;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <h1 align="Center">Candidate Form</h1><hr><br><br>
+    <div class="clearfix">
+        <a href="/candidates/" class="candidates-button">Candidates List</a>
+        <a href="/loginval/" class="candidates-button">Back</a>
+    </div>
+    <form method="POST" action="/formsubmit/">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="first_name">First Name:</label>
+            <input type="text" id="first_name" name="first_name" required>
+        </div>
+        <div class="form-group">
+            <label for="last_name">Last Name:</label>
+            <input type="text" id="last_name" name="last_name" required>
+        </div>
+        <div class="form-group">
+            <label for="branch">Branch:</label>
+            <input type="text" id="branch" name="branch" required>
+        </div>
+        <div class="form-group">
+            <label for="skills">Skills:</label>
+            <input type="text" id="skills" name="skills" required>
+        </div>
+        <div class="form-group">
+            <label for="jr_number">JR Number:</label>
+            <input type="text" id="jr_number" name="jr_number" required>
+        </div>
+        <div class="form-group">
+            <label for="phone_number">Phone Number:</label>
+            <input type="text" id="phone_number" name="phone_number" required>
+        </div>
+        <div class="form-group">
+            <label for="email_address">Email Address:</label>
+            <input type="email" id="email_address" name="email_address" required>
+        </div>
+        <div class="form-group">
+            <label for="current_company">Current Company:</label>
+            <input type="text" id="current_company" name="current_company" required>
+        </div>
+        <div class="form-group">
+            <label for="total_experience">Total Experience:</label>
+            <input type="number" id="total_experience" name="total_experience" required>
+        </div>
+        <div class="form-group">
+            <label for="ctc">CTC:</label>
+            <input type="number" id="ctc" name="ctc" required>
+        </div>
+        <div class="form-group">
+            <label for="expected_ctc">Expected CTC:</label>
+            <input type="number" id="expected_ctc" name="expected_ctc" required>
+        </div>
+        <div class="form-group">
+            <label for="offers_in_hand">Offers in Hand:</label>
+            <input type="number" id="offers_in_hand" name="offers_in_hand" required>
+        </div>
+        <div class="form-group">
+            <label for="notice_period">Notice Period:</label>
+            <input type="number" id="notice_period" name="notice_period" required>
+        </div>
+        <div class="form-group">
+            <label for="current_location">Current Location:</label>
+            <input type="text" id="current_location" name="current_location" required>
+        </div>
+        <div class="form-group">
+            <label for="source">Source:</label>
+            <input type="text" id="source" name="source" required>
+        </div>
+        <div class="form-group">
+            <label for="screening_status">Screening Status:</label>
+            <input type="text" id="screening_status" name="screening_status" required>
+        </div>
+        <div class="form-group">
+            <label for="screened_by">Screened By:</label>
+            <input type="text" id="screened_by" name="screened_by" required>
+        </div>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
